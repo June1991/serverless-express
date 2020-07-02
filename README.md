@@ -91,15 +91,6 @@ inputs:
 ```
 
 
-      - .env
-    region: ap-guangzhou
-    runtime: Nodejs10.15
-    functionName: express-demo-${stage} #云函数名称
-    apigatewayConf:
-        protocols:
-            - http
-                  - https
-            environment: release
 
 3、创建远程仓库https://github.com/June1991/serverless-express ，将项目代码提交到远程master分支。同时创建testing、dev。此时三个分支的代码在同一个版本上（假设为版本0）。
 
