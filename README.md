@@ -102,7 +102,7 @@ inputs:
 
 1、现在需要开发某个功能模块。假设需要有两位开发者：Tom、Jorge。两位开发者分别从dev（版本0）上创建特性分支为feature1、feature2进行研发。
 
-<img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1593680347852.png" alt="1593680347852" style="zoom:40%;" />
+<img src="https://github.com/June1991/serverless-express/blob/master/doc/img/1593680347852.png" alt="1593680347852" style="zoom:40%;" />
 
 2、为了在开发过程中得到独立的运行和调试环境，需要在.env文件中设置自己的stage，例如Tom在serverless.yml的项目目录下配置.env如下：
 
