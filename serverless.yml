@@ -3,7 +3,7 @@ component: express # (必填) 引用 component 的名称，当前用到的是 ex
 name: expressDemo # (必填) 该 express 组件创建的实例名称
 org: personal # (可选) 用于记录组织信息
 app: expressDemoApp # (可选) 该 express 应用名称
-stage: prod # (可选) 用于区分环境信息
+stage: ${env:STAGE} # (可选) 用于区分环境信息
 
 inputs:
   src:
@@ -12,7 +12,7 @@ inputs:
       - .env
   region: ap-guangzhou
   runtime: Nodejs10.15
-  functionName: express-demo-${env:STAGE} #云函数名称
+  functionName: express-demo-${stage} #云函数名称
   apigatewayConf:
     protocols:
       - http
