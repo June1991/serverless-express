@@ -7,6 +7,10 @@ app.get(`/`, (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'))
 })
 
+app.get(`/feature`, (req, res) => {
+  res.sendFile(path.join(__dirname, 'feature.html'))
+})
+
 app.get('/user', (req, res) => {
   res.send([
     {
