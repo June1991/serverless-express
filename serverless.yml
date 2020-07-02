@@ -3,7 +3,7 @@ component: express # (必填) 引用 component 的名称，当前用到的是 ex
 name: expressDemo # (必填) 该 express 组件创建的实例名称
 org: personal # (可选) 用于记录组织信息
 app: expressDemoApp # (可选) 该 express 应用名称
-stage: dev # (可选) 用于区分环境信息
+stage: prod # (可选) 用于区分环境信息
 
 inputs:
   src:
