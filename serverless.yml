@@ -1,16 +1,18 @@
-org: orgDemo # (optional) serverless dashboard org. default is the first org you created during signup.
-app: appDemo # (optional) serverless dashboard app. default is the same as the name property.
-stage: dev # (optional) serverless dashboard stage. default is dev.
-component: express # (required) name of the component. In that case, it's express.
-name: expressDemo # (required) name of your express component instance.
+#serverless.yml
+component: express # (必填) 引用 component 的名称，当前用到的是 express-tencent 组件
+name: expressDemo # (必填) 该 express 组件创建的实例名称
+org: personal # (可选) 用于记录组织信息
+app: expressDemoApp # (可选) 该 express 应用名称
+stage: dev # (可选) 用于区分环境信息
 
 inputs:
   src:
-    src: ./ # (optional) path to the source folder. default is a hello world app.
+    src: ./ 
     exclude:
       - .env
   region: ap-guangzhou
   runtime: Nodejs10.15
+  functionName: express-demo-${env:STAGE} #云函数名称
   apigatewayConf:
     protocols:
       - http
