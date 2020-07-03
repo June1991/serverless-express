@@ -208,7 +208,7 @@ TENCENT_SECRET_KEY=xxxxxxxx
 STAGE=testing
 ```
 
-3、执行sls  deploy部署成功后，测试人员开始进行列相关测试。
+3、执行sls  deploy部署成功后，测试人员开始进行相关测试，直至功能稳定通过。
 
 
 ## 3.发布上线
