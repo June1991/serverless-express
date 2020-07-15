@@ -30,4 +30,4 @@ jobs:
     - name: Install serverless
       run: npm install -g serverless
     - name: Auto deploy
-      run: sh 'echo "${{ secrets.TENCENT_SECRET_ID}}"
+      run: sh 'echo "${{ secrets.TENCENT_SECRET_ID}}"'
