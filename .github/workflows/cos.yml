@@ -29,7 +29,7 @@ jobs:
       - name: Upload COS
         uses: zkqiang/tencent-cos-action@v0.1.0
         with:
-          args: delete -r -f / && upload -r ./ /
+          args: upload -r ./ /
           secret_id: ${{ secrets.TENCENT_SECRET_ID }}
           secret_key: ${{ secrets.TENCENT_SECRET_KEY }}
           bucket: ${{ secrets.BUCKET }}
