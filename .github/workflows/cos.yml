@@ -24,7 +24,7 @@ jobs:
           node-version: "10.x"
 
       - name: Build project
-        run: npm build
+        run: npm install
 
       - name: Upload COS
         uses: zkqiang/tencent-cos-action@v0.1.0
