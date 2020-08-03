@@ -16,6 +16,22 @@
 
 ## 1.基本概念
 
+#### 项目概念
+
+
+
+一个serverless应用是由单个或者多个组件实例构成。
+
+每个组件中都会有一个serverless.yml文件，该文件定义了组件的一些参数，这个些参数在部署时用于生成实例的信息。比如region，定义了资源的所在区。
+
+组织是在serverless应用上层的概念，主要是为了管理。如一个公司会有不同部门进行serverless应用开发，设置不同组织名称，方便做后期的权限管理。
+
+比如开发一个express应用，最基本的是引入express组件，业务中间可能会涉及到其他一些云产品比如cos，所以整个应用目录如下：
+
+![1596187596773](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1596187596773.png)
+
+
+
 #### 分支概念
 
 示例中将会涉及以下分支：
@@ -27,8 +43,24 @@
 - feature-xxx: 用于增加一个新功能，比如不同开发者会从dev拉取不同的特性分支进行开发
 - hotfix-xxx: 用于修复一个紧急bug
 
+#### 命令说明
 
+##### 函数发布版本
 
+```
+sls deploy --inputs.publish="fun01,fun02" #部署时函数发项目下 fun01、fun02 的版本
+sls deploy --inputs.publish  #部署时项目下所有函数发版本
+```
+
+##### 函数流量设置
+
+```
+sls deploy --inputs.traffic="0.2" #部署后切换20%流量到 $latest 版本
+```
+
+- Serverless Framework 流量切换修改的是云函数别名为 $default 的流量规则。
+- traffic 配置的值为 $latest 版本对应的流量占比，最后一次云函数发布的版本的流量占比为 1-$latest 流量占比。例如，traffic="0.2"，实则配置 $default 的流量规则为 {$latest:0.2, 最后一次云函数发布的版本: 0.8}
+- 如果函数还未发任何固定版本，只存在 $latest 版本的函数时，traffic 无论如何设置，都会是 $latest:1.0。
 #### serverless framework参数
 
 示例中会通过stage参数进行环境的隔离，不同的stage配置最后部署到不同的云函数上。
@@ -36,20 +68,23 @@
 ```
 # serverless.yml
 
+org: xxx-department #  用于记录组织信息,默认为您的腾讯云appid
+app: expressDemoApp #  应用名称，默认为与组件实例名称
+stage: ${env:STAGE} #  用于开发环境的隔离，默认为dev
+
+
 component: express # (必填) 引用 component 的名称，当前用到的是 express-tencent 组件
-name: expressDemo # (必填) 该 express 组件创建的实例名称
-org: xxx-department # (可选) 用于记录组织信息
-app: expressDemoApp # (可选) 该 express 应用名称
-stage: ${env:stage} # (可选) 用于区分环境信息，从.env文件读取配置
+name: expressDemo # (必填) 组件创建的实例名称
+
 
 inputs:
   src:
     src: ./ 
     exclude:
       - .env
-  region: ap-guangzhou
+  region: ap-guangzhou 
   runtime: Nodejs10.15
-  funcitonName: express-demo-${stage} #云函数名称
+  funcitonName: ${name}-${stage}-${app}-${org} #云函数名称
   apigatewayConf:
     protocols:
       - http
@@ -65,11 +100,13 @@ inputs:
 
 ```
 #serverless.yml
+org: xxx-department #  用于记录组织信息,默认为您的腾讯云appid
+app: expressDemoApp #  应用名称，默认为与组件实例名称
+stage: ${env:STAGE} #  用于开发环境的隔离，默认为dev
+
+
 component: express # (必填) 引用 component 的名称，当前用到的是 express-tencent 组件
-name: expressDemo # (必填) 该 express 组件创建的实例名称
-org: personal # (可选) 用于记录组织信息
-app: expressDemoApp # (可选) 该 express 应用名称
-stage: ${env:STAGE} # (可选) 用于区分环境信息，从.env文件读取配置
+name: expressDemo # (必填) 组件创建的实例名称
 
 inputs:
   src:
@@ -78,7 +115,7 @@ inputs:
       - .env
   region: ap-guangzhou
   runtime: Nodejs10.15
-  functionName: express-demo-${stage} #云函数名称
+  funcitonName: ${name}-${stage}-${app}-${org} #云函数名称
   apigatewayConf:
     protocols:
       - http
@@ -249,8 +286,16 @@ sls deploy --inputs.publish --inputs.traffic=0 #部署并发布函数版本v1，
 
 至此，我们完成了一个severless-express项目的开发和上线发布。
 
-## 4.总结
 
-- 项目在部署过程中，根据不同环境设置不同的stage值，并让stage作为函数名称一部分，来实现环境隔离。
-- 灰度发布可以执行自定义脚本完成。
-- 后续会引入CI能力，让开发与部署及发布能够自动化，敬请期待~
+
+>?
+>
+>- 项目在部署过程中，根据不同环境设置不同的stage值，并让stage作为函数名称一部分，来实现环境隔离。
+>- 灰度发布可以执行自定义脚本完成。
+
+
+
+## 4.进阶文档
+
+- 基于github action的自动化部署
+- 基于coding 的自动化部署
