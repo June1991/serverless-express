@@ -14,7 +14,7 @@
 
 1. 创建您的Coding Devops项目。
 
-   ![1596444814258]( https://github.com/June1991/serverless-express/tree/master/doc/img/1596444814258.png)
+   ![1596444814258]( https://github.com/June1991/serverless-express/blob/master/doc/img/1596444814258.png )
 
 2. 创建一个构建计划，选择自定义构建过程。
 
@@ -24,7 +24,7 @@
 
    1. 基础信息配置。本例中配置github仓库：June1991/express-demo。
 
-      ![1596445194613](https://github.com/June1991/serverless-express/tree/master/doc/img/1596445194613.png)
+      ![1596445194613](https://github.com/June1991/serverless-express/blob/master/doc/img/1596445194613.png)
 
    2. 触发规则配置。本例中配置代码推送到dev分支时触发构建。
 
@@ -32,7 +32,7 @@
 
    3. 环境变量配置。本例中配置STAGE变量为部署环境dev，TENCENT_CLOUD_API_CRED为腾讯云账号密钥（密钥配置路径：左下角项目设置-》开发者选项-》凭据管理-》录入凭据-》腾讯云API密钥）。
 
-      ![1596445800067](https://github.com/June1991/serverless-express/tree/master/doc/img/1596445800067.png)
+      ![1596445800067](https://github.com/June1991/serverless-express/blob/master/doc/img/1596445800067.png)
 
    4. 流程配置。
 
