@@ -28,7 +28,7 @@
 
 比如开发一个express应用，最基本的是引入express组件，业务中间可能会涉及到其他一些云产品比如cos，所以整个应用目录如下：
 
-![1596187596773](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1596187596773.png)
+![1596187596773](https://github.com/June1991/serverless-express/blob/master/doc/img/1596187596773.png)
 
 
 
@@ -256,7 +256,13 @@ STAGE=testing
 
 
 
-为了保证线上业务稳定，我们一般采取灰度发布的方式:
+为了保证线上业务稳定，我们一般采取灰度发布的方式。
+
+每次上线一个功能，执行`sls deploy`会部署到$latest版本上。我们将切部分流量在$latest版本上进行观察，然后逐步将流量切到$latest版本。当流量切到100%时，我们会固化这个版本，并将流量全部切到固化后的版本。
+
+![1596441449319](https://github.com/June1991/serverless-express/blob/master/doc/img/1596441449319.png)
+
+Serverless应用灰度发布采用云函数$default（默认流量）别名进行操作。步骤如下：
 
 1、设置生产环境中的.env为：
 
@@ -297,5 +303,5 @@ sls deploy --inputs.publish --inputs.traffic=0 #部署并发布函数版本v1，
 
 ## 4.进阶文档
 
-- 基于github action的自动化部署
+- 基于github 的自动化部署
 - 基于coding 的自动化部署
