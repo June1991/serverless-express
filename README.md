@@ -304,4 +304,5 @@ sls deploy --inputs.publish --inputs.traffic=0 #部署并发布函数版本v1，
 ## 4.进阶文档
 
 - [基于github 的自动化部署](https://github.com/June1991/serverless-express/blob/master/doc/%E5%9F%BA%E4%BA%8Egithub%E7%9A%84%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2.md)
-- 基于coding 的自动化部署
+- [基于coding 的自动化部署](https://github.com/June1991/serverless-express/blob/master/doc/%E5%9F%BA%E4%BA%8Ecoding%E7%9A%84%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2.md)
+
