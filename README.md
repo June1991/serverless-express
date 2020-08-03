@@ -262,7 +262,7 @@ STAGE=testing
 
 ![1596441449319](https://github.com/June1991/serverless-express/blob/master/doc/img/1596441449319.png)
 
-Serverless应用灰度发布采用云函数$default（默认流量）别名进行操作。步骤如下：
+Serverless应用的灰度发布是利用云函数$default（默认流量）别名进行配置，部署时配置的traffic参数为$latest版本流量占比，默认另一部分流量切到当前云函数最后一次发布的版本。步骤如下：
 
 1、设置生产环境中的.env为：
 
@@ -275,7 +275,7 @@ STAGE=prod
 2、部署到线上环境$latest，并切换10%的流量在$latest版本：
 
 ```
-sls deploy --inputs.traffic=0.1 #部署并切换10%流量到$latest版本上
+sls deploy --inputs.traffic=0.1 #部署并切换10%流量到$latest版本上，90%的流量在最后一次发布的云函数版本N上
 ```
 
 3、对$latest版本进行一些监控与观察，等版本稳定之后把流量切到该版本上：
@@ -287,7 +287,7 @@ sls deploy --inputs.traffic=1.0 #部署并切换100%流量到$latest版本上
 3、流量全部切换成功后，对于一个稳定版本，我们要把他做一个标记，以免后续发布新功能时，如果遇到线上问题，方便快速回退版本：
 
 ```
-sls deploy --inputs.publish --inputs.traffic=0 #部署并发布函数版本v1，切换所有流量到版本v1
+sls deploy --inputs.publish --inputs.traffic=0 #部署并发布函数版本N+1，切换所有流量到版本N+1
 ```
 
 至此，我们完成了一个severless-express项目的开发和上线发布。
@@ -305,4 +305,3 @@ sls deploy --inputs.publish --inputs.traffic=0 #部署并发布函数版本v1，
 
 - [基于github 的自动化部署](https://github.com/June1991/serverless-express/blob/master/doc/%E5%9F%BA%E4%BA%8Egithub%E7%9A%84%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2.md)
 - [基于coding 的自动化部署](https://github.com/June1991/serverless-express/blob/master/doc/%E5%9F%BA%E4%BA%8Ecoding%E7%9A%84%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2.md)
-
