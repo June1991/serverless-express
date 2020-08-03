@@ -18,7 +18,7 @@
 
 2. 创建一个构建计划，选择自定义构建过程。
 
-   ![1596446336910](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1596446336910.png)
+   ![1596446336910](https://github.com/June1991/serverless-express/blob/master/doc/img/1596446336910.png)
 
 3. 配置构建计划。
 
@@ -28,7 +28,7 @@
 
    2. 触发规则配置。本例中配置代码推送到dev分支时触发构建。
 
-      ![1596445230077](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1596445230077.png)
+      ![1596445230077](https://github.com/June1991/serverless-express/blob/master/doc/img/1596445230077.png)
 
    3. 环境变量配置。本例中配置STAGE变量为部署环境dev，TENCENT_CLOUD_API_CRED为腾讯云账号密钥（密钥配置路径：左下角项目设置-》开发者选项-》凭据管理-》录入凭据-》腾讯云API密钥）。
 
