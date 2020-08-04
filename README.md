@@ -48,8 +48,8 @@
 ##### 函数发布版本
 
 ```
-sls deploy --inputs.publish="fun01,fun02" #部署时函数发项目下 fun01、fun02 的版本
-sls deploy --inputs.publish  #部署时项目下所有函数发版本
+sls deploy --inputs.publish="fun01,fun02" #部署时发布项目下函数fun01、fun02 的版本
+sls deploy --inputs.publish  #部署时发布项目下所有函数版本
 ```
 
 ##### 函数流量设置
@@ -84,7 +84,7 @@ inputs:
       - .env
   region: ap-guangzhou 
   runtime: Nodejs10.15
-  funcitonName: ${name}-${stage}-${app}-${org} #云函数名称
+  functionName: ${name}-${stage}-${app}-${org} #云函数名称
   apigatewayConf:
     protocols:
       - http
