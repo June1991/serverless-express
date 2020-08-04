@@ -48,8 +48,8 @@
 ##### 函数发布版本
 
 ```
-sls deploy --inputs.publish="fun01,fun02" #部署时发布项目下函数fun01、fun02 的版本
-sls deploy --inputs.publish  #部署时发布项目下所有函数版本
+sls deploy --inputs.publish="fun01,fun02" #部署时项目下fun01、fun02 函数发布版本
+sls deploy --inputs.publish  #部署时项目下所有函数发布版本
 ```
 
 ##### 函数流量设置
